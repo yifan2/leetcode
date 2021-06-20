@@ -43,17 +43,20 @@ class Solution:
         if len(trust) < n-1 or not trust:
             return -1
         inEdgeDict = {key:0 for key in range(1,n+1)}
-        judgeNum = 0
+        # judgeNum = 0
         judge = None
         candidates = [i for i in range(1,n+1)]
         for edge in trust:
             outNode,inNode = edge
-            if outNode in candidates:
-                candidates.remove(outNode)
+            # if outNode in candidates:
+            #     candidates.remove(outNode)
             inEdgeDict[inNode]  += 1
             if inEdgeDict[inNode] == n - 1:
-                judgeNum += 1
+                # judgeNum += 1
                 judge = inNode
-        if judgeNum == 1 and judge in candidates:
-            return judge
+        if judge:
+            if inEdgeDict[judge] == 0:
+                return judge
+        # if judgeNum == 1 and judge in candidates:
+        #     return judge
         return -1
